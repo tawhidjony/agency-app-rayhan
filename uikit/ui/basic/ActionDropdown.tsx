@@ -16,7 +16,11 @@ type ActionDropdownProps = {
 //   label: `Action ${i + 1}`,
 // }));
 
-export function ActionDropdown({ onChange, enableSearchable = false, options = [] }: ActionDropdownProps) {
+export function ActionDropdown({
+  onChange,
+  enableSearchable = false,
+  options = [],
+}: ActionDropdownProps) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Option | null>(null);
   const [search, setSearch] = useState<string>("");
@@ -39,7 +43,10 @@ export function ActionDropdown({ onChange, enableSearchable = false, options = [
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setOpen(false);
       }
     }
@@ -51,6 +58,7 @@ export function ActionDropdown({ onChange, enableSearchable = false, options = [
     <div className="relative inline-block text-left w-full" ref={dropdownRef}>
       <div>
         <button
+          type="button"
           onClick={toggleDropdown}
           className="inline-flex justify-between w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded   hover:bg-gray-50 focus:outline-none"
         >
@@ -73,23 +81,37 @@ export function ActionDropdown({ onChange, enableSearchable = false, options = [
 
       {open && (
         <div className="absolute right-0 z-10 mt-2 w-full max-h-60 overflow-y-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-slate-400 ring-opacity-15">
-          {enableSearchable && <input
-            type="text"
-            placeholder="Search..."
-            value={search}
-            onChange={handleSearch}
-            className="w-full px-3 py-1 border-b border-gray-200 text-sm focus:outline-none"
-          />}
+          {enableSearchable && (
+            <input
+              type="text"
+              placeholder="Search..."
+              value={search}
+              onChange={handleSearch}
+              className="w-full px-3 py-1 border-b border-gray-200 text-sm focus:outline-none"
+            />
+          )}
           <div className="py-1 text-gray-900 max-h-48 overflow-y-auto">
             {filteredOptions.map((option) => (
               <button
                 key={option.id}
                 onClick={() => handleSelect(option)}
-                className={`flex items-center gap-2 w-full px-4 py-2 text-left hover:bg-gray-100 ${selected?.id === option.id ? 'bg-gray-100 font-medium' : ''}`}
+                className={`flex items-center gap-2 w-full px-4 py-2 text-left hover:bg-gray-100 ${
+                  selected?.id === option.id ? "bg-gray-100 font-medium" : ""
+                }`}
               >
                 {selected?.id === option.id && (
-                  <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-4 h-4 text-green-500"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 )}
                 {option.label}

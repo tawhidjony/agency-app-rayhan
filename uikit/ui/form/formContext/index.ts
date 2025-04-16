@@ -1,8 +1,9 @@
 import { createContext, useContext } from "react"
-import { Control, FieldValues } from "react-hook-form"
+import { Control, FieldValues, UseFormReturn } from "react-hook-form"
 
 export type FormContextType<TFormValues extends FieldValues = any> = {
     control: Control<TFormValues>
+    form: UseFormReturn
   }
   
 export const FormContext = createContext<FormContextType | null>(null)
@@ -12,5 +13,5 @@ export  const useFormContext =<TFormValues extends FieldValues = any>() => {
     if (!context) {
       throw new Error('useUiFormContext must be used within a UiForm component')
     }
-    return context.control as Control<TFormValues   >
+    return{ control: context.control as Control<TFormValues>, form:context.form}
 }

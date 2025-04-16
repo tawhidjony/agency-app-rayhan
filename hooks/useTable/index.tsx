@@ -107,7 +107,7 @@ const useTable = <T,>({
                       <tr
                         key={row.id}
                         className={cn(
-                          "cursor-pointer transition group hover:bg-gray-100 relative h-24 odd: bg-gray-100 even:bg-white"
+                          "cursor-pointer transition group hover:bg-gray-100 relative h-24 odd: bg-gray-200 even:bg-white"
                         )}
                       >
                         {row.getVisibleCells().map((cell) => {

@@ -1,6 +1,8 @@
 import { UserEntity } from "@/common";
+import { cn } from "@/uikit";
 import { Checkbox } from "@/uikit/ui";
 import { ColumnDef } from "@tanstack/react-table";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function UserListListItem() {
@@ -32,17 +34,48 @@ export default function UserListListItem() {
       ),
     },
     {
-      accessorKey: "name",
-      header: "Name",
+      accessorKey: "image",
+      header: "Image",
       cell: ({ row }) => {
-        const { name } = row.original;
+        const { image } = row.original;
+        if (image === null) {
+          return (
+            <>
+              <Image
+                src={"/assets/avatar.png"}
+                width={64}
+                height={64}
+                alt="Image"
+                className="w-12 h-12 object-cover rounded"
+              />
+            </>
+          );
+        } else {
+          <Image
+            src={"/assets/avatar.png"}
+            width={64}
+            height={64}
+            alt="Image"
+            className="w-12 h-12 object-cover rounded"
+          />;
+        }
+      },
+    },
+
+    {
+      accessorKey: "username",
+      header: () => <span>Username</span>,
+      cell: ({ row }) => {
+        const { username } = row.original;
         return (
           <>
-            <div className="flex flex-col gap-1">
-              <div className="text-gray-500">{name}</div>
+            <div>
+              <p className="mt-0 text-gray-900 font-semibold ">{username}</p>
             </div>
             <div
-              className={`absolute flex justify-center items-center opacity-0 group-hover:opacity-100 transition`}
+              className={cn(
+                "absolute flex justify-center items-center opacity-0 group-hover:opacity-100 transition"
+              )}
             >
               <div className="flex gap-2 mt-2">
                 <Link href={"#"} className="text-blue-500 cursor-pointer">
@@ -63,14 +96,16 @@ export default function UserListListItem() {
       },
     },
     {
-      accessorKey: "username",
-      header: () => <span>Username</span>,
+      accessorKey: "name",
+      header: "Name",
       cell: ({ row }) => {
-        const { username } = row.original;
+        const { name } = row.original;
         return (
-          <div>
-            <p className="mt-2 mb-4 text-gray-900 font-semibold ">{username}</p>
-          </div>
+          <>
+            <div className="flex flex-col gap-1">
+              <div className="text-gray-500">{name}</div>
+            </div>
+          </>
         );
       },
     },
@@ -87,27 +122,13 @@ export default function UserListListItem() {
       },
     },
     {
-      accessorKey: "phone",
-      header: "Phone",
+      accessorKey: "role_id",
+      header: "Role",
       cell: ({ row }) => {
-        const { phone } = row.original;
+        const { role_id } = row.original;
         return (
           <div>
-            <p className="fmt-2 mb-4 text-gray-900 font-semibold ">{phone}</p>
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: "status",
-      header: "Status",
-      cell: ({ row }) => {
-        const { status } = row.original;
-        return (
-          <div>
-            <span className="px-3 py-2 text-sm font-medium rounded bg-green-700 text-white">
-              {status}
-            </span>
+            <p className="fmt-2 mb-4 text-gray-900 font-semibold ">{role_id}</p>
           </div>
         );
       },
