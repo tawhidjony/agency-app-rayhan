@@ -1,7 +1,7 @@
-import { JSX } from 'react'
+import React from "react"
 
 type Props = {
-  tableComponent: JSX.Element 
+  tableComponent: React.ElementType<any, any>
 }
 
 export default function UserListView({tableComponent}: Props) {
