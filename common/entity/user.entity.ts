@@ -1,4 +1,5 @@
-export interface UserEntity {
+import { IBaseEntity } from "./base.entity";
+export interface UserEntity extends IBaseEntity {
     username: string;
     name: string;
     email: string;
@@ -11,12 +12,9 @@ export interface UserEntity {
     isForigner: boolean;
     role_id: number;
     department_id: number;
-    status: string;
-    id: number;
     is_active: boolean;
     is_superuser: boolean;
-    created_at: string;
-    updated_at: string | null;
-    created_by: string | null;
-    updated_by: string | null;
+    status: string;
 }
+
+
