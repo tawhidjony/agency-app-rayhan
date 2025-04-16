@@ -1,11 +1,4 @@
-import React from "react"
-
-type Props = {
-  tableComponent: React.ElementType<any, any>
-}
-
-export default function UserListView({tableComponent}: Props) {
-  return (
-    <>{tableComponent}</>
-  )
+import { type TBasicListViewProps } from "@/common";
+export default function UserListView({ tableComponent }: TBasicListViewProps) {
+  return <>{tableComponent}</>;
 }

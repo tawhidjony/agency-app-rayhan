@@ -1,3 +1,3 @@
 export * from './api.list.type';
-export * from "./tableType";
+export * from './global.list.type';
 
