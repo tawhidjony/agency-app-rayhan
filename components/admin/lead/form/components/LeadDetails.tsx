@@ -1,6 +1,5 @@
 "use client";
 
-
 import { ActionDropdown, Card, TextField } from "@/uikit/ui";
 import PrimaryButton from "@/uikit/ui/basic/PrimaryButton";
 import RadioButton from "@/uikit/ui/basic/RadioButton";
@@ -85,23 +84,19 @@ const LeadDetails = () => {
               />
             </div>
 
-           <div className="md:w-1/3 mt-3">
+            <div className="md:w-1/3 mt-3">
               <h4 className="mb-2 font-semibold text-gray-600 text-sm">
                 Nationality
               </h4>
-              <ActionDropdown
-                options={nationalityOptions}
-              />
+              <ActionDropdown options={nationalityOptions} />
             </div>
 
             <div className="md:w-1/3 mt-3">
               <h4 className="mb-2 font-semibold text-gray-600 text-sm">
                 Country
               </h4>
-              <ActionDropdown
-                options={countryOptions}
-              />
-            </div> 
+              <ActionDropdown options={countryOptions} />
+            </div>
           </div>
 
           {/* contact number / email / contact preference */}
@@ -157,19 +152,15 @@ const LeadDetails = () => {
               <h4 className="mb-2 font-semibold text-gray-600 text-sm">
                 Study destination
               </h4>
-              <ActionDropdown
-                options={destinationsOptions}
-              />
+              <ActionDropdown options={destinationsOptions} />
             </div>
 
             <div className="md:w-1/3 mt-3">
               <h4 className="mb-2 font-semibold text-gray-600 text-sm">
                 Preferred level
               </h4>
-              <ActionDropdown
-                options={preferredLevelOptions}
-              />
-            </div> 
+              <ActionDropdown options={preferredLevelOptions} />
+            </div>
 
             <div className="md:w-1/3 mt-3">
               <h4 className="mb-2 font-semibold text-gray-600 text-sm">

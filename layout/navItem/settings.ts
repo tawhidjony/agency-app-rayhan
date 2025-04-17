@@ -1,8 +1,16 @@
-import { MenuTypeProps } from "./types/menu.type";
 import { IoSettingsOutline } from "react-icons/io5";
+import { MenuTypeProps } from "./types/menu.type";
 
-export const settings:MenuTypeProps = {
+
+export const settings:MenuTypeProps =   {
     title: "Settings",
-    path: "/settings",
+    path: "#",
     icon: IoSettingsOutline,
-}
+    children: [
+      {
+        title: "Department",
+        path: "/settings/department",
+        onClick: () => {},
+      }
+    ],
+  }

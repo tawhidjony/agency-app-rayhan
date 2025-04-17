@@ -1,42 +1,51 @@
-import { cn } from "@/uikit/cn";
-import React, { InputHTMLAttributes } from "react";
+import React from "react";
 
-type RadioButtonProps = {
-  options?: { label: string; value: string }[];
-  className?: string;
+interface RadioButtonProps {
+  name: string;
+  options: { label: string; value: string }[];
+  selectedValue: string;
+  onChange: (value: string) => void;
   isFlex?: boolean;
-} & InputHTMLAttributes<HTMLInputElement>;
+}
 
 const RadioButton: React.FC<RadioButtonProps> = ({
-  options = [],
-  className,
+  name,
+  options,
+  selectedValue,
+  onChange,
   isFlex = true,
-  ...props
 }) => {
   return (
-    <div
-      className={cn(
-        "items-center",
-        isFlex ? "flex gap-4" : "flex-col space-y-4"
-      )}
-    >
-      {options?.map((option, index) => (
+    <div className={`${isFlex ? "flex items-center space-x-4" : ""}`}>
+      {options.map((option) => (
         <label
-          htmlFor={`radio-${index}`}
-          key={index}
-          className="flex gap-2 items-center cursor-pointer"
+          key={option.value}
+          className={`${
+            isFlex
+              ? "flex items-center space-x-2"
+              : "flex items-start space-x-2 space-y-4"
+          } cursor-pointer`}
         >
           <input
             type="radio"
-            id={`radio-${index}`}
-            className={cn(
-              "w-6 h-6 rounded-full border-2 flex items-center justify-center border-gray-400",
-              className
-            )}
-            value={option?.value}
-            {...props}
+            name={name}
+            value={option.value}
+            checked={selectedValue === option.value}
+            onChange={() => onChange(option.value)}
+            className="hidden"
           />
-          <span className="text-gray-700">{option?.label}</span>
+          <div
+            className={`w-6 h-6 rounded-full border-2 flex items-center justify-center p-3 ${
+              selectedValue === option.value
+                ? "border-blue-500"
+                : "border-gray-400"
+            }`}
+          >
+            {selectedValue === option.value && (
+              <div className="w-3 h-3 flex justify-center items-center bg-blue-500 rounded-full p-2"></div>
+            )}
+          </div>
+          <span className="text-gray-700">{option.label}</span>
         </label>
       ))}
     </div>

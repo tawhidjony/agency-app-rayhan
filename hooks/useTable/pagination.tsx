@@ -35,14 +35,14 @@ const Pagination: React.FC<PaginationProps> = ({
         <button
           disabled={page === 1}
           onClick={() => setPage(1)}
-          className="px-3 py-2 bg-white text-blue-500 rounded border border-blue-500 disabled:bg-gray-200 disabled:border-gray-500 disabled:text-gray-500 cursor-pointer"
+          className="px-3 py-2 bg-white text-blue-500 rounded border border-blue-500 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-500 disabled:text-gray-500 cursor-pointer"
         >
           <MdKeyboardDoubleArrowLeft size={25} />
         </button>
         <button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
-          className="px-3 py-2 bg-white text-blue-500 rounded border border-blue-500 disabled:bg-gray-200 disabled:border-gray-500 disabled:text-gray-500 cursor-pointer"
+          className="px-3 py-2 bg-white text-blue-500 rounded border border-blue-500 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-500 disabled:text-gray-500 cursor-pointer"
         >
           <MdKeyboardArrowLeft size={25} />
         </button>
@@ -57,14 +57,14 @@ const Pagination: React.FC<PaginationProps> = ({
         <button
           onClick={() => setPage(page + 1)}
           disabled={page === totalPage}
-          className="px-3 py-2 bg-white text-blue-500 rounded border border-blue-500 disabled:bg-gray-200 disabled:border-gray-500 disabled:text-gray-500 cursor-pointer"
+          className="px-3 py-2 bg-white text-blue-500 rounded border border-blue-500 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-500 disabled:text-gray-500 cursor-pointer"
         >
           <MdKeyboardArrowRight size={25} />
         </button>
         <button
           onClick={() => setPage(totalPage)}
           disabled={page === totalPage}
-          className="px-3 py-2 bg-white text-blue-500 rounded border border-blue-500 disabled:bg-gray-200 disabled:border-gray-500 disabled:text-gray-500 cursor-pointer"
+          className="px-3 py-2 bg-white text-blue-500 rounded border border-blue-500 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:border-gray-500 disabled:text-gray-500 cursor-pointer"
         >
           <MdKeyboardDoubleArrowRight size={25} />
         </button>

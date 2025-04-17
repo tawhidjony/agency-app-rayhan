@@ -37,7 +37,7 @@ export const Form = <TSchema extends ZodType>(props: FormProps<TSchema>) => {
   );
 
   return (
-    <FormContext value={{ control: form.control }}>
+    <FormContext value={{ control: form.control, form }}>
       <FormProvider {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

@@ -1,11 +1,8 @@
-import { TBasicFormViewProps } from "@/common";
 import { FormTextField, OutlineButton } from "@/uikit/ui";
 import Image from "next/image";
 import { LoginSchemaType } from "./login.model";
 
-export default function LoginView({
-  formRef,
-}: TBasicFormViewProps<LoginSchemaType>) {
+export default function LoginView() {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <div className="flex w-full max-w-4xl bg-white rounded-2xl shadow-lg overflow-hidden mx-4 md:mx-0">

@@ -3,7 +3,7 @@ import apiConfig from "../http/apiConfig";
 export const UserQueryKey = "users";
 
 // api endpoint
-export const ApiEndPoint = {
+const ApiEndPoint = {
     LISTS_API: "/users/",
 }
 

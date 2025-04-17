@@ -36,7 +36,7 @@ export default function LoginComponent() {
       onSubmit={onSubmitHandler}
       ref={formRef}
     >
-      <LoginView formRef={formRef} />
+      <LoginView />
     </Form>
   );
 }

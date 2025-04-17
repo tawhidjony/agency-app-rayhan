@@ -9,13 +9,11 @@ import {
   FormUpload,
   OutlineButton,
 } from "@/uikit/ui";
-import { useFormContext } from "react-hook-form";
 import { userDefaultValues, UserSchemaType } from "./user.form.model";
 
 export default function UserFormView(
   props: TBasicFormViewProps<UserSchemaType>
 ) {
-  const { watch } = useFormContext();
   const { formRef } = props;
 
   return (
