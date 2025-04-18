@@ -1,12 +1,12 @@
 import dynamic from "next/dynamic"
 import { Suspense } from "react"
 
-const SupplierTypeLisComponent = dynamic(()=> import("@/components/admin/supplier/supplierType/list/supplierType.list.component"))
+const SupplierTypeComponent = dynamic(()=> import("@/components/admin/supplier/supplierType/supplierType.component"))
 
 export default function SupplierType() {
   return (
    <Suspense>
-     <SupplierTypeLisComponent />
+     <SupplierTypeComponent />
    </Suspense>
   )
 }
