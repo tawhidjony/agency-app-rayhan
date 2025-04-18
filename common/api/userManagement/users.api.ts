@@ -1,14 +1,15 @@
-import apiConfig from "@/common/http/apiConfig";
+import apiConfig from "../../http/apiConfig";
 
-export const ServiceTypesQueryKey = "serviceTypes";
+export const UserQueryKey = "users";
 
 // api endpoint
 const ApiEndPoint = {
-    LISTS_API: "/service-types/",
-} 
+    LISTS_API: "/users/",
+}
+
 
 //  api config 
-export const fetchServiceTypesList = async <R>(page: number, perPage: number): Promise<R> => {
+export const fetchUserLists = async <R>(page: number, perPage: number): Promise<R> => {
     const res = await apiConfig.get<R>(ApiEndPoint.LISTS_API,{
         params: {
             page: page,
@@ -17,3 +18,4 @@ export const fetchServiceTypesList = async <R>(page: number, perPage: number): P
     });
     return res.data;
 };
+

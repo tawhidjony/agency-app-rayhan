@@ -1,14 +1,13 @@
 import apiConfig from "@/common/http/apiConfig";
 
-export const ServiceTypesQueryKey = "serviceTypes";
-
+export const SupplierTypesQueryKey = "supplierTypes";
 // api endpoint
 const ApiEndPoint = {
-    LISTS_API: "/service-types/",
+    LISTS_API: "/supplier-types/",
 } 
 
 //  api config 
-export const fetchServiceTypesList = async <R>(page: number, perPage: number): Promise<R> => {
+export const fetchSupplierTypesList = async <R>(page: number, perPage: number): Promise<R> => {
     const res = await apiConfig.get<R>(ApiEndPoint.LISTS_API,{
         params: {
             page: page,

@@ -1,7 +1,7 @@
-import {UserEntity} from "@/common";
-import {cn} from "@/uikit";
-import {Checkbox} from "@/uikit/ui";
-import {ColumnDef} from "@tanstack/react-table";
+import { UserEntity } from "@/common";
+import { cn } from "@/uikit";
+import { Checkbox } from "@/uikit/ui";
+import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -121,18 +121,7 @@ export default function ServiceTypesListListItem() {
                 );
             },
         },
-        {
-            accessorKey: "role_id",
-            header: "Role",
-            cell: ({row}) => {
-                const {role_id} = row.original;
-                return (
-                    <div>
-                        <p className="fmt-2 mb-4 text-gray-900 font-semibold ">{role_id}</p>
-                    </div>
-                );
-            },
-        },
+      
     ];
     return columns;
 }
