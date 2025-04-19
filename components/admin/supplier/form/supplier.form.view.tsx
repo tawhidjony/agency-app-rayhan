@@ -1,14 +1,14 @@
 "use client";
 import { TBasicFormViewProps } from "@/common";
 import {
-  Card,
-  FormTextField,
-  OutlineButton
+    Card,
+    FormTextField,
+    OutlineButton
 } from "@/uikit/ui";
-import { SupllierTypeSchemaType, supplierTypeDefaultValues } from "./supplier.form.model";
+import { SupplierTypeSchemaType, supplierTypeDefaultValues } from "./supplier.form.model";
 
 export default function SupplierFormView(
-  props: TBasicFormViewProps<SupllierTypeSchemaType>
+  props: TBasicFormViewProps<SupplierTypeSchemaType>
 ) {
   const { formRef } = props;
 
@@ -21,7 +21,7 @@ export default function SupplierFormView(
           <Card.Body>
             <div className="px-2 pb-4">
               <div className="mt-3">
-                <FormTextField<SupllierTypeSchemaType>
+                <FormTextField<SupplierTypeSchemaType>
                   name="name"
                   label="Name"
                   placeholder="Name"

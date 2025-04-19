@@ -1,23 +1,36 @@
 "use client";
-import { SupplierTypeEntity } from "@/common";
-import { fetchSupplierTypesCreate } from "@/common/api";
-import { Form, FormRefProps } from "@/uikit/ui";
-import { useMutation } from "@tanstack/react-query";
-import { useRef } from "react";
-import { SupllierTypeSchemaType, supplierTypeDefaultValues, supplierTypeSchema } from "./supplierType.form.model";
+import { refetchFn, SupplierTypeEntity, TBasicFormComponentProps } from "@/common";
+import { fetchSupplierTypesCreate, fetchSupplierTypesEdit, fetchSupplierTypesSingle, SupplierTypesQueryKey } from "@/common/api";
+import { useEdit } from "@/hooks/useEdit";
+import { Form } from "@/uikit/ui";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { supplierTypeDefaultValues, supplierTypeSchema, SupplierTypeSchemaType } from "./supplierType.form.model";
 import SupplierTypeFormView from "./supplierType.form.view";
-export default function SupplierTypeFormComponent() {
 
-  const formRef = useRef<FormRefProps<SupllierTypeSchemaType>>(null);
-  const mutation = useMutation<SupplierTypeEntity, Error, SupllierTypeSchemaType>({
-    mutationFn: (value) => fetchSupplierTypesCreate<SupllierTypeSchemaType, SupplierTypeEntity>(value),
-    onSuccess: () => {
-      formRef.current?.reset()
-    },
+export default function SupplierTypeFormComponent({formRef}:TBasicFormComponentProps<SupplierTypeSchemaType>) {
+  const queryClient = useQueryClient()
+
+  const {id, isEdit } = useEdit<SupplierTypeSchemaType, SupplierTypeEntity>({
+    defaultValues:supplierTypeDefaultValues,
+    queryKey: SupplierTypesQueryKey.Edit,
+    queryFnApi: fetchSupplierTypesSingle,
+    resetValues: (value) => formRef?.current?.reset(value)
+  })
+
+
+  const mutation = useMutation<SupplierTypeEntity, Error, SupplierTypeSchemaType>({
+    mutationKey:[SupplierTypesQueryKey.Create],
+    mutationFn: (value) => isEdit ? fetchSupplierTypesEdit<SupplierTypeSchemaType, SupplierTypeEntity>(id, value):fetchSupplierTypesCreate<SupplierTypeSchemaType, SupplierTypeEntity>(value),
+    onSuccess: () => {formRef?.current?.reset()},
+    onSettled:() => refetchFn(queryClient, SupplierTypesQueryKey.List),
   });
 
-  const onSubmitHandler = async (value: SupllierTypeSchemaType) => {
-    mutation.mutateAsync(value)
+  const onSubmitHandler = async (value: SupplierTypeSchemaType) => {
+    if (isEdit) {
+       mutation.mutateAsync(value)
+    }else{
+      mutation.mutateAsync(value)
+    }
   };
 
   return (

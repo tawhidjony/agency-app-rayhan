@@ -1,16 +1,12 @@
-import SupplierTypeFormComponent from './form/supplierType.form.component'
-import SupplierTypeView from './supplierType.view'
+"use client"
+import { FormRefProps } from '@/uikit/ui';
+import { useRef } from 'react';
+import { SupplierTypeSchemaType } from './form/supplierType.form.model';
+import SupplierTypeView from './supplierType.view';
 
 const SupplierTypeComponent = () => {
-  return (
-    <div className='grid grid-cols-12 gap-4'>
-      <div className='col-span-4'>
-       <SupplierTypeFormComponent />
-      </div>
-      <div className='col-span-8 '>
-       <SupplierTypeView />
-      </div>
-    </div>)
+  const formRef = useRef<FormRefProps<SupplierTypeSchemaType>>(null);
+  return (  <SupplierTypeView formRef={formRef} /> )
 }
 
 export default SupplierTypeComponent

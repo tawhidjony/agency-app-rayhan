@@ -1,10 +1,14 @@
-import { SupplierTypeEntity } from "@/common";
+import { SupplierTypeEntity, TBasicDefaultProps } from "@/common";
+import { useEditStore } from "@/common/store";
 import { cn } from "@/uikit";
-import { Checkbox } from "@/uikit/ui";
+import { Button, Checkbox } from "@/uikit/ui";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
+import { SupplierTypeSchemaType } from "../form/supplierType.form.model";
 
-export default function SupplierTypeListListItem() {
+export default function SupplierTypeListListItem({formRef}:TBasicDefaultProps<SupplierTypeSchemaType>) {
+  const {isEditId} = useEditStore()
+
   const columns: ColumnDef<SupplierTypeEntity>[] = [
     {
       id: "select",
@@ -48,16 +52,14 @@ export default function SupplierTypeListListItem() {
               )}
             >
               <div className="flex gap-2 mt-2">
-                <Link href={"#"} className="text-blue-500 cursor-pointer">
+                <Button  variant="default" 
+                onClick={()=> isEditId(row.original.id)}
+                >
                   Edit
-                </Link>
+                </Button>
                 <span className="text-gray-400">|</span>
                 <Link href={"#"} className="text-red-500 cursor-pointer">
                   Trash
-                </Link>
-                <span className="text-gray-400">|</span>
-                <Link href={"#"} className="text-blue-500 cursor-pointer">
-                  View Application
                 </Link>
               </div>
             </div>

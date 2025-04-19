@@ -28,7 +28,7 @@ const useTable = <T,>({
   const tableData = useFetchList<T>({
     page: page,
     perPage: pageSize,
-    queryKey: ["users", page],
+    queryKey: [fetchList.queryKey, page],
     queryFnApi: fetchList.queryFnApi,
   });
 
@@ -65,11 +65,11 @@ const useTable = <T,>({
       return (
         <>
           {tableFilter(table)}
-          {tableData?.isFetching ? (
+          {/* {tableData?.isFetching ? (
             <>
               <TableSkeleton table={table} pageSize={pageSize} />
             </>
-          ) : (
+          ) : ( */}
             <>
               <table className="min-w-full bg-white shadow-md">
                 <thead className="bg-white border-b border-gray-200 shadow p-4">
@@ -126,7 +126,7 @@ const useTable = <T,>({
                 </tbody>
               </table>
             </>
-          )}
+          {/* // )} */}
 
           <Pagination
             table={table}
