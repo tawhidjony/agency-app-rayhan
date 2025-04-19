@@ -1,14 +1,12 @@
-import { SupplierTypeEntity, TBasicDefaultProps } from "@/common";
+import { SupplierTypeEntity } from "@/common";
 import { useEditStore } from "@/common/store";
 import { cn } from "@/uikit";
 import { Button, Checkbox } from "@/uikit/ui";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
-import { SupplierTypeSchemaType } from "../form/supplierType.form.model";
 
-export default function SupplierTypeListListItem({formRef}:TBasicDefaultProps<SupplierTypeSchemaType>) {
+export default function SupplierTypeListListItem() {
   const {isEditId} = useEditStore()
-
   const columns: ColumnDef<SupplierTypeEntity>[] = [
     {
       id: "select",

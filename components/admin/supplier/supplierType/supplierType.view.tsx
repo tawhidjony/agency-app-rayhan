@@ -11,7 +11,7 @@ export default function SupplierTypeView({formRef}:TBasicViewProps<SupplierTypeS
                 <SupplierTypeFormComponent formRef={formRef} />
             </div>
             <div className='col-span-8 '>
-                <SupplierTypeListComponent formRef={formRef} />
+                <SupplierTypeListComponent  />
             </div>
         </div>
     )
