@@ -4,6 +4,7 @@ interface EditState {
     id: number;
     isEdit:boolean;
     isEditId: (id:number) => void;
+    isEditFalse?:any
   }
   
   // Create Zustand store
@@ -13,5 +14,6 @@ interface EditState {
     isEditId: (id:number) => set((state) => ({
         id:id,
         isEdit: true,
-     }))
+     })),
+     isEditFalse:()=> set((state)=> ({ isEdit: false }))
   }));

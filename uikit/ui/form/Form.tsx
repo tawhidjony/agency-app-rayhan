@@ -22,7 +22,9 @@ export const Form = <TSchema extends ZodType>(props: FormProps<TSchema>) => {
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<FormValues>,
   });
-
+  function resetHH(){
+    return form
+  }
   useImperativeHandle(
     ref,
     () => ({

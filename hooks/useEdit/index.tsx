@@ -33,7 +33,7 @@ export const useEdit = <T extends object, R extends Partial<T>>({
   resetValues,
 }: PageProps<T, R>) => {
   const { id, isEdit } = useEditStore();
-  const { data, isSuccess } = useQuery({
+  const { data } = useQuery({
     queryKey: [queryKey, id],
     queryFn: () => queryFnApi(id),
     enabled: !!id,
@@ -41,10 +41,10 @@ export const useEdit = <T extends object, R extends Partial<T>>({
 
   const filteredData = filterByDataType<T>(data, defaultValues);
   useEffect(() => {
-    if (filteredData) {
+    if (isEdit !== false) {
       resetValues(filteredData);
     }
   }, [filteredData]);
 
-  return { id, isEdit, editData: filteredData, isSuccess };
+  return { id, isEdit , filteredData};
 };
